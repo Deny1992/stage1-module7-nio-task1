@@ -21,29 +21,17 @@ public class FileReader {
             buffer.flip();
             boolean isData = false;
             for (int i = 0; i < fileSize; i++) {
-                char temp = (char) buffer.get();
-                switch (temp){
-                    case ':':
-                    case '\n':
-                        builder.append(" ");
-                        isData = !isData;
-                        continue;
-                    case '\r':
-                        continue;
-                }
-                if(isData) {
-                    builder.append(temp);
-                }
+                builder.append((char) buffer.get());
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         String[] result = builder.toString().trim().split("\\s+");
         Profile profile = new Profile();
-        profile.setName(result[0]);
-        profile.setAge(Integer.parseInt(result[1]));
-        profile.setEmail(result[2]);
-        profile.setPhone(Long.parseLong(result[3]));
+        profile.setName(result[1]);
+        profile.setAge(Integer.parseInt(result[3]));
+        profile.setEmail(result[5]);
+        profile.setPhone(Long.parseLong(result[7]));
         return profile;
     }
 }
