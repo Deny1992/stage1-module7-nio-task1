@@ -19,7 +19,6 @@ public class FileReader {
             ByteBuffer buffer = ByteBuffer.allocate((int) fileSize);
             inChannel.read(buffer);
             buffer.flip();
-            boolean isData = false;
             for (int i = 0; i < fileSize; i++) {
                 builder.append((char) buffer.get());
             }
